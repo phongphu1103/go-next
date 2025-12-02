@@ -3,8 +3,9 @@ package controllers
 import (
     "github.com/gin-gonic/gin"
     "net/http"
-	"api/database"
-	"api/models"
+
+	"backend/database"
+	"backend/models"
 )
 
 // c *gin.Context is a pointer to a Gin request context

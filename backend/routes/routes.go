@@ -2,7 +2,7 @@ package routes
 
 import (
     "github.com/gin-gonic/gin"
-    "api/controllers"
+    "backend/http/controllers"
 )
 
 func RegisterRoutes(r *gin.Engine) {
