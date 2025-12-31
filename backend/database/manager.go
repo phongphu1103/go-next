@@ -24,7 +24,7 @@ func (m *DatabaseManager) Disconnect() error {
         return nil
     }
 
-    db, err := m.DB.DB()
+    db, err := m.db.DB()
     if err != nil {
         return err
     }

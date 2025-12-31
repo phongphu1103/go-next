@@ -6,11 +6,33 @@ import (
 
 	"backend/database"
 	"backend/models"
+    "backend/services"
 )
+
+type ArticleController struct {
+    service service.IArticleService
+}
+
+func NewArticleController(service services.IArticleService) *ArticleController {
+    return &ArticleController{service: service}
+}
 
 // c *gin.Context is a pointer to a Gin request context
 // gin wants to avoid copying big data structures
 // allow the handler to modify the response and request context
+func (c *ArticleController) Create(ctx context.Context, input services.ArticleCreateInput) (*domain.Article, error) {
+    return c.service.Create(ctx, input)
+}
+
+func (c *ArticleController) FindByID(ctx context.Context, id uint) (*domain.Article, error) {
+    return c.service.FindByID(ctx, id)
+}
+
+func (c *ArticleController) List(ctx context.Context, query) ([]domain.Article, error) {
+    return c.service.List(ctx)
+}
+
+
 func GetArticles(c *gin.Context) {
     category := c.Query("category")
 
