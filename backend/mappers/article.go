@@ -18,9 +18,11 @@ func ArticleToDomain(m *models.Article) *domain.Article {
         Description: m.Description,
         Content:     m.Content,
         CategoryID:  m.CategoryID,
+        CreatedAt:   m.CreatedAt,
     }
 
-    if m.Category.ID != 0 {
+    // Category is nil when it was not preloaded
+    if m.Category != nil {
         article.Category = CategoryToDomain(m.Category)
     }
 
